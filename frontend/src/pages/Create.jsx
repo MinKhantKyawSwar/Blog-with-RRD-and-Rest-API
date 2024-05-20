@@ -6,7 +6,7 @@ import { redirect } from "react-router-dom";
 const Create = () => {
   return (
     <>
-      <PostForm />
+      <PostForm header={"Create your post now"} btnText={" Create Post "} />
     </>
   );
 };
@@ -23,7 +23,6 @@ export const action = async ({ request, params }) => {
     image: data.get("image"),
     date: data.get("date"),
   };
-  console.log(postData);
 
   const response = await fetch("http://localhost:8080/posts", {
     method: "POST",
@@ -32,7 +31,16 @@ export const action = async ({ request, params }) => {
     },
     body: JSON.stringify(postData),
   });
+
+  if (response.status === 422) {
+    return response;
+  }
+
   if (!response.ok) {
+    // throw json({ message: "You should fill all information" }, { status: 422 });
+    // throw new Error(" ");
   }
   return redirect("/");
 };
+
+// 18-1 37 mins

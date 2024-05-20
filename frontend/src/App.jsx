@@ -3,15 +3,20 @@ import Main from "./layout/Main";
 import Posts from "./pages/Posts";
 import Create, { action as postCreateAction } from "./pages/Create";
 import { loader as postsLoader } from "./pages/Posts";
-import { loader as detailsLoader } from "./pages/Details";
+import {
+  loader as detailsLoader,
+  action as deleteAction,
+} from "./pages/Details";
 import Details from "./pages/Details";
 import Edit from "./pages/Edit";
+import Error from "./pages/Error";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Main />,
+      errorElement: <Error />,
       children: [
         {
           index: true,
@@ -24,13 +29,20 @@ function App() {
           action: postCreateAction,
         },
         {
-          path: "/post-details/:id",
-          element: <Details />,
+          path: ":id",
+          id: "post-detail",
           loader: detailsLoader,
-        },
-        {
-          path: "/edit-post/:id",
-          element: <Edit />,
+          children: [
+            {
+              index: true,
+              element: <Details />,
+              action: deleteAction,
+            },
+            {
+              path: "edit-post",
+              element: <Edit />,
+            },
+          ],
         },
       ],
     },

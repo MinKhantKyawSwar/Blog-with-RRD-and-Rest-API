@@ -19,6 +19,7 @@ export const loader = async () => {
   const response = await fetch("http://localhost:8080/posts");
 
   if (!response.ok) {
+    // throw json({ message: "Unable to gain post now" }, { status: 500 });
   } else {
     const data = await response.json();
     return data.posts;

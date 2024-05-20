@@ -130,6 +130,7 @@ textarea {
   padding: 10px 0px;
   font-size: 18px;
   width: 50%;
+  cursor: pointer;
 }
 
 .sm {
@@ -138,10 +139,37 @@ textarea {
   font-size: 16px;
   display: inline;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .detail-footer {
   display: flex;
   align-items: center;
-  justify-content: end;
+  flex: end;
+}
+
+.er-btn {
+  width: max-content;
+  font-size: 20px;
+  padding: 8px;
+  background: transparent;
+  color: black;
+}
+
+.er-btn:hover {
+  background: #333;
+  color: white;
+}
+
+.er-icon {
+  max-width: 8rem;
+  color: red;
+}
+
+.errorPage {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
 }
