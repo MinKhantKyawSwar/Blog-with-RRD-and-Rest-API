@@ -4,7 +4,7 @@ import PostItem from "../components/PostItem";
 
 const Posts = () => {
   const posts = useLoaderData();
-  console.log(posts);
+  // console.log(posts);
   return (
     <>
       {posts.length > 0 &&
