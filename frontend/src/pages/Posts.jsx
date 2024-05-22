@@ -4,7 +4,7 @@ import PostItem from "../components/PostItem";
 
 const Posts = () => {
   const posts = useLoaderData();
-  // console.log(posts);
+
   return (
     <>
       {posts.length > 0 &&
@@ -19,7 +19,8 @@ export const loader = async () => {
   const response = await fetch("http://localhost:8080/posts");
 
   if (!response.ok) {
-    // throw json({ message: "Unable to gain post now" }, { status: 500 });
+    // add some codes
+    throw new Error("");
   } else {
     const data = await response.json();
     return data.posts;
