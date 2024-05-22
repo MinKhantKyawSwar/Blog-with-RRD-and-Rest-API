@@ -15,14 +15,13 @@ const PostDetails = ({ post }) => {
       submit(null, {
         method: "DELETE",
       });
-    } else {
     }
   };
 
   return (
     <section className="details">
       <div className="detail-header">
-        <p className="detail-title">{title}</p>
+        <p className="detail-title">{title.toUpperCase()}</p>
         <p className="date">
           <ClockIcon className="clockIcon" />
           {date}

@@ -173,3 +173,11 @@ textarea {
   align-items: center;
   margin-top: 5rem;
 }
+
+@media (max-width: 480px) {
+  .main,
+  .details,
+  .form-section {
+    width: 100%;
+  }
+}
