@@ -82,6 +82,7 @@ export const action = async ({ request, params }) => {
     date: data.get("date"),
   };
 
+  // let url = "http://localhost:8080/posts";
   let url = "http://localhost:8080/posts";
 
   if (method === "PATCH") {

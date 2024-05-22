@@ -14,7 +14,7 @@ const Details = () => {
 export default Details;
 
 export const loader = async ({ request, params }) => {
-  const response = await fetch(`http://localhost:8080/posts/${params.id}`);
+  const response = await fetch(`http://localhost:3000/posts/${params.id}`);
 
   if (!response.ok) {
   } else {

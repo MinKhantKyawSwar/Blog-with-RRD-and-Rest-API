@@ -12,6 +12,7 @@ import {
 import Details from "./pages/Details";
 import Edit from "./pages/Edit";
 import Error from "./pages/Error";
+import Auth from "./pages/Auth";
 
 function App() {
   const router = createBrowserRouter([
@@ -29,6 +30,10 @@ function App() {
           path: "/create-post",
           element: <Create />,
           action: postCreateAction,
+        },
+        {
+          path: "/auth",
+          element: <Auth />,
         },
         {
           path: ":id",

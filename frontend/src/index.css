@@ -174,6 +174,19 @@ textarea {
   margin-top: 5rem;
 }
 
+.create-acc {
+  font-size: 16px !important;
+  font-weight: normal !important;
+}
+
+.create-acc a {
+  text-decoration: underline !important;
+}
+
+.login-btn {
+  margin: 20px 0;
+}
+
 @media (max-width: 480px) {
   .main,
   .details,
