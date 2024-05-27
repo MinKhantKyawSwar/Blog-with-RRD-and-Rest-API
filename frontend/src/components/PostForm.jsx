@@ -92,19 +92,19 @@ export const action = async ({ request, params }) => {
   const response = await fetch(url, {
     method,
     headers: {
-      "Content-type": "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(postData),
   });
 
-  //checking beckend security code
-  if (response.status === 422) {
+  if (response.status === 422 || response.status === 401) {
+    console.log(response);
     return response;
   }
 
   if (!response.ok) {
-    //some code
     throw new Error("");
   }
+
   return redirect("/");
 };

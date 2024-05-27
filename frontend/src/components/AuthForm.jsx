@@ -1,7 +1,9 @@
-import { Link, Form, useSearchParams } from "react-router-dom";
+import { Link, Form, useSearchParams, useActionData } from "react-router-dom";
 
 const AuthForm = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const data = useActionData();
+
+  const [searchParams] = useSearchParams();
 
   const isLogin = searchParams.get("mode") === "login";
 
@@ -9,23 +11,32 @@ const AuthForm = () => {
     <section className="form-section">
       <div>
         <p>{isLogin ? "Login to your account" : "Create a new account now"}</p>
-        <Form>
+        {data && data.errors && (
+          <ul>
+            {Object.values(data.errors).map((err) => {
+              <li key={err}>{err}</li>;
+            })}
+          </ul>
+        )}
+        {data && data.message && <p>{data.message}</p>}
+
+        <Form method="post">
           <div>
             <label htmlFor="email">Email</label>
-            <input type="email" name="email" id="email" />
+            <input type="email" name="email" id="email" required />
           </div>
           <div>
             <label htmlFor="password">Password</label>
-            <input type="password" name="password" id="password" />
+            <input type="password" name="password" id="password" required />
           </div>
           <button className="btn login-btn">
-            {isLogin ? "Login" : "Register "}
+            {isLogin ? "Login" : "Register"}
           </button>
         </Form>
         {isLogin ? (
           <p className="create-acc">
             Don't you have an account?{" "}
-            <Link to={"/auth?mode=register"}>Create account</Link>
+            <Link to={"/auth?mode=signup"}>Create account</Link>
           </p>
         ) : (
           <p className="create-acc">
