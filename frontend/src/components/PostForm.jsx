@@ -96,9 +96,11 @@ export const action = async ({ request, params }) => {
     },
     body: JSON.stringify(postData),
   });
+  console.log(response);
 
   //checking beckend security code
   if (response.status === 422) {
+    console.log(response);
     return response;
   }
 
