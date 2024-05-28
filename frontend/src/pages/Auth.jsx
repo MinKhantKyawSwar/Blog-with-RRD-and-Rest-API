@@ -3,18 +3,14 @@ import AuthForm from "../components/AuthForm";
 import { redirect } from "react-router-dom";
 
 const Auth = () => {
-  return (
-    <>
-      <AuthForm />
-    </>
-  );
+  return <AuthForm />;
 };
 
 export default Auth;
 
 export const action = async ({ request }) => {
   const searchParams = new URL(request.url).searchParams;
-  const mode = searchParams.get("mode");
+  const mode = searchParams.get("mode") || "login";
 
   if (mode !== "login" && mode !== "signup") {
     throw new Error("");
@@ -46,6 +42,9 @@ export const action = async ({ request }) => {
   const token = resData.token;
 
   localStorage.setItem("token", token);
-  console.log(token);
+  const expDate = new Date();
+  expDate.setHours(expDate.getHours() + 1);
+  localStorage.setItem("exp", expDate.toISOString());
+
   return redirect("/");
 };

@@ -14,5 +14,3 @@ const Create = () => {
 };
 
 export default Create;
-
-// 18-1 37 mins

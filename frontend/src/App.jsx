@@ -13,6 +13,8 @@ import Details from "./pages/Details";
 import Edit from "./pages/Edit";
 import Error from "./pages/Error";
 import Auth, { action as authAction } from "./pages/Auth";
+import { loader as logoutLoader } from "./pages/Logout";
+import { tokenLoader } from "./util/auth";
 
 function App() {
   const router = createBrowserRouter([
@@ -20,6 +22,8 @@ function App() {
       path: "/",
       element: <Main />,
       errorElement: <Error />,
+      id: "root",
+      loader: tokenLoader,
       children: [
         {
           index: true,
@@ -35,6 +39,10 @@ function App() {
           path: "/auth",
           element: <Auth />,
           action: authAction,
+        },
+        {
+          path: "/logout",
+          loader: logoutLoader,
         },
         {
           path: ":id",
