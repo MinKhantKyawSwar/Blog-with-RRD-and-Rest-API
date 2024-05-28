@@ -14,7 +14,7 @@ import Edit from "./pages/Edit";
 import Error from "./pages/Error";
 import Auth, { action as authAction } from "./pages/Auth";
 import { loader as logoutLoader } from "./pages/Logout";
-import { tokenLoader } from "./util/auth";
+import { checkTokenLoader, tokenLoader } from "./util/auth";
 
 function App() {
   const router = createBrowserRouter([
@@ -34,6 +34,7 @@ function App() {
           path: "/create-post",
           element: <Create />,
           action: postCreateAction,
+          loader: checkTokenLoader,
         },
         {
           path: "/auth",
@@ -58,6 +59,7 @@ function App() {
               path: "edit-post",
               element: <Edit />,
               action: postEditAction,
+              loader: checkTokenLoader,
             },
           ],
         },
