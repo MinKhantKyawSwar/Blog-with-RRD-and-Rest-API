@@ -157,8 +157,8 @@ textarea {
 }
 
 .er-btn:hover {
-  background: #333;
-  color: white;
+  background: #ffffff;
+  color: rgb(0, 0, 0);
 }
 
 .er-icon {
@@ -172,6 +172,42 @@ textarea {
   flex-direction: column;
   align-items: center;
   margin-top: 5rem;
+}
+
+.create-acc {
+  font-size: 16px !important;
+  font-weight: normal !important;
+}
+
+.create-acc a {
+  text-decoration: underline !important;
+}
+
+.login-btn {
+  margin: 20px 0;
+}
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 3px solid #000000;
+  border-right: 3px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.loader {
+  margin-left: 200px;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 480px) {

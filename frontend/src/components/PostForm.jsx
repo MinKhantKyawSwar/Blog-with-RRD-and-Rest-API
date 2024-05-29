@@ -1,10 +1,12 @@
-import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import React from "react";
 import { Form, Link, redirect, useActionData } from "react-router-dom";
+import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import uuid from "react-uuid";
+import { getToken } from "../util/auth";
 
 const PostForm = ({ header, btnText, oldPostData, method }) => {
   const data = useActionData();
+
   return (
     <section className="form-section">
       <div className="detail-header">
@@ -15,9 +17,9 @@ const PostForm = ({ header, btnText, oldPostData, method }) => {
       </div>
       {data && data.errors && (
         <ul>
-          {Object.values(data.errors).map((err) => {
-            <li key={err}>{err}</li>;
-          })}
+          {Object.values(data.errors).map((err) => (
+            <li key={err}>{err}</li>
+          ))}
         </ul>
       )}
       <Form method={method}>
@@ -73,6 +75,7 @@ export default PostForm;
 export const action = async ({ request, params }) => {
   const data = await request.formData();
   const method = request.method;
+  const token = getToken();
 
   const postData = {
     id: uuid(),
@@ -92,21 +95,21 @@ export const action = async ({ request, params }) => {
   const response = await fetch(url, {
     method,
     headers: {
-      "Content-type": "application/json",
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
     },
     body: JSON.stringify(postData),
   });
   console.log(response);
 
-  //checking beckend security code
   if (response.status === 422) {
     console.log(response);
     return response;
   }
 
   if (!response.ok) {
-    //some code
     throw new Error("");
   }
+
   return redirect("/");
 };
