@@ -21,7 +21,7 @@ function App() {
     {
       path: "/",
       element: <Main />,
-      errorElement: <Error />,
+      // errorElement: <Error />,
       id: "root",
       loader: tokenLoader,
       children: [

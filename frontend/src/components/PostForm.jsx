@@ -86,7 +86,6 @@ export const action = async ({ request, params }) => {
   };
 
   let url = `${process.env.REACT_APP_DOMAIN}/posts`;
-
   if (method === "PATCH") {
     const id = params.id;
     url = `${process.env.REACT_APP_DOMAIN}/posts/${id}`;

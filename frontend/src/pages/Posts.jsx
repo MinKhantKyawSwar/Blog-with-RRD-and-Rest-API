@@ -15,7 +15,7 @@ const Posts = () => {
 export default Posts;
 
 export const loader = async () => {
-  const response = await fetch(`${process.env.REACT_APP_DOMAIN}/posts`);
+  const response = await fetch(`http://localhost:8080/posts`);
 
   if (!response.ok) {
     // add some codes
