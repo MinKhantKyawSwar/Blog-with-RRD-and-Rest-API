@@ -1,7 +1,6 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import PostItem from "../components/PostItem";
-
 const Posts = () => {
   const posts = useLoaderData();
 
@@ -16,7 +15,7 @@ const Posts = () => {
 export default Posts;
 
 export const loader = async () => {
-  const response = await fetch("http://localhost:8080/posts");
+  const response = await fetch(`${process.env.REACT_APP_DOMAIN}/posts`);
 
   if (!response.ok) {
     // add some codes
